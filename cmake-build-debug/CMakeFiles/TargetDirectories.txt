@@ -1,0 +1,3 @@
+/home/bene/CLion/CLion-Workspace/Embedded-Systems-1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/bene/CLion/CLion-Workspace/Embedded-Systems-1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/bene/CLion/CLion-Workspace/Embedded-Systems-1/cmake-build-debug/CMakeFiles/Embedded_Systems_1.dir
