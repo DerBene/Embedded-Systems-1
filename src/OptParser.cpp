@@ -1,18 +1,34 @@
 #include "../includes/OptParser.h"
+#include <iostream>
 
 bool CmdLineOptParser::Parse(int argc, char* argv[]){
-    //ToDo
-    if(argc != 0){
-        //ToDo
-        bool evaluator = Option();
+
+    if(argc > 1 ){
+        bool evaluator = true;
+        for(int i=1; i<=argc; i++){
+            char* checkForFlag = argv[i];
+
+            if('-' == *checkForFlag){
+                printf("flag: %s\n", checkForFlag);
+            }else{
+                printf("not a flag \n");
+            }
+            //ToDo
+
+        }
+
         return evaluator;
+
     }else{
         return false;
     }
 }
 
-virtual bool int CmdLineOptParser::Option(const char C, chosnt *info) {
+bool CmdLineOptParser::Option(const char C, const char * info) {
+
+
     //ToDo
+    return true;
 }
 
 

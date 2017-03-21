@@ -8,5 +8,5 @@ public:
 
 protected:
     // returns true, if option was successfully parsed.
-    virtual bool Option(const char C, chosnt char* info);
+    virtual bool Option(const char C, const char* info);
 };
