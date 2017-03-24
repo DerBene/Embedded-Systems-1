@@ -3,46 +3,51 @@
 
 bool CmdLineOptParser::Parse(int argc, char* argv[]){
 
-    //ToDo: Must return True if no parameters are given
+    bool evaluator = true;
     if(argc > 1 ){
-        bool evaluator = true;
         for(int i=1; i<argc; i++){
             char* checkForFlag = argv[i];
-            char printParameter;
-            char *printArguments = NULL;
+            char printParameter='0';
+            char* printArguments = NULL;
 
             if('-' == *checkForFlag){
                 checkForFlag++;
-                //ToDO: Validate that its a char
                 printParameter = *checkForFlag;
-                printf("flag: %c\t", printParameter);
-                checkForFlag++;
+                if((printParameter >= 65 && printParameter <= 90) || (printParameter >= 97 && printParameter <= 122)) {
+                    printf("flag: %c\t", printParameter);
+                    checkForFlag++;
 
-                /*
-                 * If there is a Whitespace at this point, it means it cant be of sort "-xWert" (Type 2)
-                 */
-                 if ( *checkForFlag == '\0') {
-                     checkForFlag++;
+                    /*
+                     * If there is a Whitespace at this point, it means it cant be of sort "-xWert" (Type 2)
+                     */
+                    if (*checkForFlag == '\0') {
+                        //ToDo: dont count the pointer, find smth else to get next entry
+                        checkForFlag++;
 
-                     /*
-                      * If there is a "-" at this point, it means it was of sort "-x" (Type 1)
-                      * else the following are the Arguments (Typ 3)
-                      */
-                     if ('-' == *checkForFlag){
-                         printArguments = "bool"; //ToDo: change to smth better
-                     } else {
-                         i++;
-                         printArguments = checkForFlag;
-                     }
-                 /*
-                  * If there is "=" at this point its an assignment of "printparameter" to the Arguments given after "=" (Typ 4)
-                  */
-                 }else if('=' == *checkForFlag){
-                     checkForFlag++;
-                     printArguments = checkForFlag;
-                 }else{
-                     printArguments = checkForFlag;
-                 }
+                        /*
+                         * If there is a "-" at this point, it means it was of sort "-x" (Type 1)
+                         * else the following are the Arguments (Typ 3)
+                         */
+
+                        if ('-' == *checkForFlag) {
+                            printArguments = "Bool"; //ToDo: change to smth better
+                        } else {
+                            i++;
+                            printArguments = checkForFlag;
+                        }
+                        /*
+                         * If there is "=" at this point its an assignment of "printparameter" to the Arguments given after "=" (Typ 4)
+                         */
+                    } else if ('=' == *checkForFlag) {
+                        checkForFlag++;
+                        printArguments = checkForFlag;
+                    } else {
+                        printArguments = checkForFlag;
+                    }
+                }else{
+                    printf("Not a char \n");
+                    evaluator = false;
+                }
             }else{
                 printf("Not a valid option at this point \n");
                 evaluator = false;
@@ -54,11 +59,11 @@ bool CmdLineOptParser::Parse(int argc, char* argv[]){
             }
         }
 
-        return evaluator;
-
     }else{
-        return false;
+        printf("No Parameters given \n");
     }
+
+    return evaluator;
 }
 
 bool CmdLineOptParser::Option(const char C, const char * info) {

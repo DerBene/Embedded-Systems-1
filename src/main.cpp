@@ -69,9 +69,9 @@ int main(int argc, char **argv) {
         }
         cout << endl;
 
-        cout << "#### Testing a single parameter '-x==test', should return false ####" << endl;
+        cout << "#### Testing a single parameter '-x==test', should return true ####" << endl;
         char *testParams7[] = {(char *) "./programm", (char *) "-x==test"};
-        if (!parser.Parse(2, testParams7)) {
+        if (parser.Parse(2, testParams7)) {
             cout << "Test Success!" << endl;
         } else {
             cout << "Test Failed!" << endl;
@@ -79,9 +79,9 @@ int main(int argc, char **argv) {
         }
         cout << endl;
 
-        cout << "#### Testing a single parameter '-x-test', should return false ####" << endl;
+        cout << "#### Testing a single parameter '-x-test', should return true ####" << endl;
         char *testParams8[] = {(char *) "./programm", (char *) "-x-test"};
-        if (!parser.Parse(2, testParams8)) {
+        if (parser.Parse(2, testParams8)) {
             cout << "Test Success!" << endl;
         } else {
             cout << "Test Failed!" << endl;
@@ -128,13 +128,13 @@ int main(int argc, char **argv) {
         }
         cout << endl;
 
-        cout << "#### Testing mixed parameters '-ahallo -b=w€lt -d cpp -a', should return false ####" << endl;
+        cout << "#### Testing mixed parameters '-ahallo -b=w€lt -d cpp -a', should return true ####" << endl;
         char *testParams12[] = {(char *) "./programm",
                                 (char *) "-ahallo",
                                 (char *) "-b=w€lt",
                                 (char *) "-c", (char *) "cpp",
                                 (char *) "-d"};
-        if (!parser.Parse(6, testParams12)) {
+        if (parser.Parse(6, testParams12)) {
             cout << "Test Success!" << endl;
         } else {
             cout << "Test Failed!" << endl;
