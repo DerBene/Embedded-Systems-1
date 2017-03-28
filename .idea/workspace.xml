@@ -13,7 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c9b24539-8e6f-466d-ad6c-661a369d5835" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OptParser.cpp" afterPath="$PROJECT_DIR$/src/OptParser.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -396,7 +395,7 @@
       <workItem from="1490337020588" duration="687000" />
       <workItem from="1490339534856" duration="5097000" />
       <workItem from="1490613249626" duration="2487000" />
-      <workItem from="1490685143435" duration="591000" />
+      <workItem from="1490685143435" duration="636000" />
     </task>
     <task id="LOCAL-00001" summary="Second commit">
       <created>1489587601911</created>
@@ -426,11 +425,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490337687874</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished exercise, submit">
+      <created>1490685749766</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1490685749766</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40374000" />
+    <option name="totallyTimeSpent" value="40419000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -476,7 +482,8 @@
     <MESSAGE value="Added first Comparison" />
     <MESSAGE value="Implemented all Logis, left some ToDo's" />
     <MESSAGE value="Finished ToDos, added last ToDo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished ToDos, added last ToDo" />
+    <MESSAGE value="Finished exercise, submit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished exercise, submit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
