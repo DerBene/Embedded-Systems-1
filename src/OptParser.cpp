@@ -1,5 +1,4 @@
 #include "../include/OptParser.h"
-#include <iostream>
 
 bool CmdLineOptParser::Parse(int argc, char* argv[]){
 
@@ -7,60 +6,70 @@ bool CmdLineOptParser::Parse(int argc, char* argv[]){
     if(argc > 1 ){
         for(int i=1; i<argc; i++){
             char* checkForFlag = argv[i];
-            char printParameter='0';
-            char* printArguments = NULL;
+            char printParameter = 0;
+            char* printArguments = nullptr;
 
             if('-' == *checkForFlag){
                 checkForFlag++;
-                printParameter = *checkForFlag;
+                if(*checkForFlag != '\0'){
+                    printParameter = *checkForFlag;
+                }else{
+
+                    return false;
+                }
+
                 if((printParameter >= 65 && printParameter <= 90) || (printParameter >= 97 && printParameter <= 122)) {
-                    printf("flag: %c\t", printParameter);
                     checkForFlag++;
 
                     /*
                      * If there is a Whitespace at this point, it means it cant be of sort "-xWert" (Type 2)
                      */
                     if (*checkForFlag == '\0') {
-                        //ToDo: dont count the pointer, find smth else to get next entry
-                        checkForFlag++;
 
-                        /*
-                         * If there is a "-" at this point, it means it was of sort "-x" (Type 1)
-                         * else the following are the Arguments (Typ 3)
-                         */
+                        if(argc > i+1) {
+                            checkForFlag = argv[i+1];
+                            /*
+                             * If there is a "-" at this point, it means it was of sort "-x" (Type 1)
+                             * else the following are the Arguments (Typ 3)
+                             */
 
-                        if ('-' == *checkForFlag) {
-                            printArguments = "Bool"; //ToDo: change to smth better
-                        } else {
-                            i++;
-                            printArguments = checkForFlag;
+                            if ('-' == *checkForFlag) {
+                                printArguments = (char *) "Bool";
+                            } else {
+                                i++;
+                                printArguments = checkForFlag;
+                            }
+
+
+                        }else{
+                            printArguments = (char *) "Bool";
                         }
                         /*
                          * If there is "=" at this point its an assignment of "printparameter" to the Arguments given after "=" (Typ 4)
                          */
                     } else if ('=' == *checkForFlag) {
                         checkForFlag++;
-                        printArguments = checkForFlag;
+                        if(*checkForFlag != '\0'){
+                            printArguments = checkForFlag;
+                        }else{
+                            return false;
+                        }
                     } else {
                         printArguments = checkForFlag;
                     }
                 }else{
-                    printf("Not a char \n");
                     evaluator = false;
                 }
             }else{
-                printf("Not a valid option at this point \n");
                 evaluator = false;
             }
 
             if(evaluator){
                 Option(printParameter,printArguments);
-                printf("Argument: %s\n", printArguments);
             }
         }
 
     }else{
-        printf("No Parameters given \n");
     }
 
     return evaluator;
@@ -70,7 +79,6 @@ bool CmdLineOptParser::Option(const char C, const char * info) {
 
     (void) C;
     (void) info;
-    //ToDo
     return true;
 }
 
